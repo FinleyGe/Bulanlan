@@ -15,7 +15,6 @@ class _MyNavigatorState extends State<MyNavigator> {
     return BottomNavigationBar(
       currentIndex: context.watch<ViewChangeNotifier>().nowIndex,
       items: const [
-        BottomNavigationBarItem(label: "测试", icon: Icon(Icons.home)),
         BottomNavigationBarItem(label: "推荐阅读", icon: Icon(Icons.book)),
         BottomNavigationBarItem(
           icon: Icon(Icons.person),
@@ -25,10 +24,8 @@ class _MyNavigatorState extends State<MyNavigator> {
       onTap: (index) {
         context.read<ViewChangeNotifier>().changeIndex(index);
         if (index == 0) {
-          context.read<ViewChangeNotifier>().title = "测试";
-        } else if (index == 1) {
           context.read<ViewChangeNotifier>().title = "推荐阅读";
-        } else if (index == 2) {
+        } else if (index == 1) {
           context.read<ViewChangeNotifier>().title = "我";
         }
       },

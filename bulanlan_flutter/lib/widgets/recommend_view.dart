@@ -1,3 +1,4 @@
+import 'package:bulanlan_flutter/widgets/tag_cloud_select.dart';
 import 'package:flutter/material.dart';
 
 class RecommentView extends StatefulWidget {
@@ -11,7 +12,7 @@ class RecommentViewState extends State<RecommentView> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text("recomment_view"),
+      child: TagCloudSelect(),
     );
   }
 }

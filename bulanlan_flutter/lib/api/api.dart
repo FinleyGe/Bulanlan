@@ -17,7 +17,7 @@ Future<ClientChannel> initClient() async {
   );
 }
 
-Future<response> login(LoginRequest r) async {
+Future<LoginResponse> login(LoginRequest r) async {
   var stub = UserServiceClient(await client);
   var res = await stub.login(r);
   return res;

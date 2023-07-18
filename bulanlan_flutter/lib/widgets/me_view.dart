@@ -11,15 +11,17 @@ class MeView extends StatefulWidget {
 class MeViewState extends State<MeView> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        UserInfo(),
-        const Divider(),
-        const ListTile(
-          leading: Icon(Icons.settings),
-          title: Text("设置"),
-        ),
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          UserInfo(),
+          const Divider(),
+          const ListTile(
+            leading: Icon(Icons.settings),
+            title: Text("设置"),
+          ),
+        ],
+      ),
     );
   }
 }

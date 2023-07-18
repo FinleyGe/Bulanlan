@@ -59,7 +59,6 @@ class _MyHomePageState extends State<MyHomePage> {
         body: IndexedStack(
           index: context.watch<ViewChangeNotifier>().nowIndex,
           children: const [
-            TestView(),
             RecommentView(),
             MeView(),
           ],
