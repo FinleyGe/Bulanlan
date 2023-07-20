@@ -2,9 +2,34 @@ import 'package:bulanlan_flutter/state.dart';
 import 'package:bulanlan_flutter/widgets/login.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:bulanlan_flutter/api/api.dart' as api;
 
-class UserInfo extends StatelessWidget {
+class UserInfo extends StatefulWidget {
   const UserInfo({Key? key}) : super(key: key);
+
+  @override
+  State<UserInfo> createState() => _UserInfoState();
+}
+
+class _UserInfoState extends State<UserInfo> {
+  void flush() {
+    api
+        .getUserInfo(
+            Provider.of<UserChangeNotifier>(context, listen: false).token)
+        .then((res) {
+      setState(() {
+        Provider.of<UserChangeNotifier>(context, listen: false).name =
+            res.userInfo.name;
+        Provider.of<UserChangeNotifier>(context, listen: false).level =
+            res.userInfo.level;
+        List<String> tags = [];
+        for (var tag in res.userInfo.tags) {
+          tags.add(tag.name);
+        }
+        Provider.of<UserChangeNotifier>(context, listen: false).tags = tags;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,10 +39,13 @@ class UserInfo extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             CircleAvatar(
-              child: Text(context.read<UserChangeNotifier>().name[0]),
-              radius: 30,
+              radius: 25,
+              child: Text(
+                Provider.of<UserChangeNotifier>(context).name[0],
+                style: const TextStyle(fontSize: 30),
+              ),
             ),
-            Text(context.read<UserChangeNotifier>().name,
+            Text(Provider.of<UserChangeNotifier>(context).name,
                 style: const TextStyle(fontSize: 20),
                 textAlign: TextAlign.center),
             IconButton(
@@ -31,7 +59,7 @@ class UserInfo extends StatelessWidget {
                       ),
                       body: Container(
                         margin: const EdgeInsets.all(10),
-                        child: Login(),
+                        child: Login(callback: flush),
                       ),
                     ),
                   ),

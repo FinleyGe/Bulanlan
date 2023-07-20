@@ -42,7 +42,7 @@ class SingleChoiceProblemState extends State<SingleChoiceProblem> {
                 setState(() {
                   _value = value!;
                 });
-                widget.callBack([value!]);
+                widget.callBack(value!);
               },
             );
           },

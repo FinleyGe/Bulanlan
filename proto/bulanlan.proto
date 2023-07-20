@@ -13,9 +13,10 @@ message User {
 
 message Book {
   string name = 1;
-  string url = 2;
-  string level = 3;
-  repeated Tag tags = 4;
+  string author = 2;
+  string url = 3;
+  string level = 4;
+  repeated Tag tags = 5;
 }
 
 message Tag { string name = 1; }
@@ -36,6 +37,16 @@ message RegisterRequest {
   string password = 3;
 }
 
+message UpdateUserLevelRequest {
+  string token = 1;
+  string level = 2;
+}
+
+message UpdateUserTagsRequest {
+  string token = 1;
+  repeated Tag tags = 2;
+}
+
 message UserInfo {
   string name = 1;
   string email = 2;
@@ -45,19 +56,32 @@ message UserInfo {
 
 message LoginResponse {
   Response response = 1;
-  UserInfo user_info = 2;
+  string token = 2;
 }
-
-message GetBooksRequest { User user = 1; }
 
 message GetBooksResponse {
   Response response = 1;
   repeated Book books = 2;
 }
 
+message Request { string token = 1; }
+
+message GetTagsResponse {
+  Response response = 1;
+  repeated Tag tags = 2;
+}
+
+message GetUserInfoResponse {
+  Response response = 1;
+  UserInfo user_info = 2;
+}
 service UserService {
   rpc Login(LoginRequest) returns (LoginResponse);
   rpc Register(RegisterRequest) returns (Response);
-  rpc UpdateUser(UserInfo) returns (Response);
-  rpc GetBooks(GetBooksRequest) returns (GetBooksResponse);
+  // rpc UpdateUser(UpdateUserRequest) returns (Response);
+  rpc UpdateUserLevel(UpdateUserLevelRequest) returns (Response);
+  rpc UpdateUserTags(UpdateUserTagsRequest) returns (Response);
+  rpc GetBooks(Request) returns (GetBooksResponse);
+  rpc GetTags(Request) returns (GetTagsResponse);
+  rpc GetUserInfo(Request) returns (GetUserInfoResponse);
 }

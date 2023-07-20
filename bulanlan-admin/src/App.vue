@@ -1,30 +1,23 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import { RouterView } from 'vue-router';
+import { NMessageProvider } from 'naive-ui';
+import { inject, onMounted } from 'vue';
+import type { VueCookies } from 'vue-cookies';
+import { userStore } from './store'
+const $cookies = inject<VueCookies>('$cookies')
+const store = userStore()
+onMounted(() => {
+  console.log($cookies)
+  if ($cookies?.get('token')) {
+    store.setLogin(true)
+  }
+})
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <n-message-provider>
+    <router-view></router-view>
+  </n-message-provider>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
+<style scoped lang="scss"></style>

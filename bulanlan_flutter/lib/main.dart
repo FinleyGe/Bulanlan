@@ -1,11 +1,13 @@
 import 'package:bulanlan_flutter/state.dart';
 import 'package:bulanlan_flutter/widgets/recommend_view.dart';
+import 'package:bulanlan_flutter/widgets/tag_cloud_select.dart';
 import 'package:bulanlan_flutter/widgets/test_view.dart';
 import 'package:bulanlan_flutter/widgets/me_view.dart';
 import 'package:flutter/material.dart';
 import 'package:bulanlan_flutter/widgets/navigator.dart';
 import 'package:provider/provider.dart';
 import 'api/api.dart';
+import 'widgets/login.dart';
 
 void main() {
   runApp(
@@ -31,6 +33,10 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const MyHomePage(),
+      routes: {
+        '/test': (context) => const TestView(),
+        '/tags': (context) => const TagCloudSelect(),
+      },
     );
   }
 }

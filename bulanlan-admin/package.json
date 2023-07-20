@@ -9,9 +9,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vicons/ionicons5": "^0.12.0",
+    "axios": "^1.4.0",
     "naive-ui": "^2.34.4",
+    "pinia": "^2.1.4",
+    "sass": "^1.63.6",
+    "scss": "^0.2.4",
     "vfonts": "^0.0.3",
-    "vue": "^3.3.4"
+    "vicons": "^0.0.1",
+    "vue": "^3.3.4",
+    "vue-cookies": "^1.8.3",
+    "vue-router": "^4.2.4"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",

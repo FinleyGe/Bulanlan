@@ -28,14 +28,15 @@ const Book$json = const {
   '1': 'Book',
   '2': const [
     const {'1': 'name', '3': 1, '4': 1, '5': 9, '10': 'name'},
-    const {'1': 'url', '3': 2, '4': 1, '5': 9, '10': 'url'},
-    const {'1': 'level', '3': 3, '4': 1, '5': 9, '10': 'level'},
-    const {'1': 'tags', '3': 4, '4': 3, '5': 11, '6': '.bulanlan.Tag', '10': 'tags'},
+    const {'1': 'author', '3': 2, '4': 1, '5': 9, '10': 'author'},
+    const {'1': 'url', '3': 3, '4': 1, '5': 9, '10': 'url'},
+    const {'1': 'level', '3': 4, '4': 1, '5': 9, '10': 'level'},
+    const {'1': 'tags', '3': 5, '4': 3, '5': 11, '6': '.bulanlan.Tag', '10': 'tags'},
   ],
 };
 
 /// Descriptor for `Book`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List bookDescriptor = $convert.base64Decode('CgRCb29rEhIKBG5hbWUYASABKAlSBG5hbWUSEAoDdXJsGAIgASgJUgN1cmwSFAoFbGV2ZWwYAyABKAlSBWxldmVsEiEKBHRhZ3MYBCADKAsyDS5idWxhbmxhbi5UYWdSBHRhZ3M=');
+final $typed_data.Uint8List bookDescriptor = $convert.base64Decode('CgRCb29rEhIKBG5hbWUYASABKAlSBG5hbWUSFgoGYXV0aG9yGAIgASgJUgZhdXRob3ISEAoDdXJsGAMgASgJUgN1cmwSFAoFbGV2ZWwYBCABKAlSBWxldmVsEiEKBHRhZ3MYBSADKAsyDS5idWxhbmxhbi5UYWdSBHRhZ3M=');
 @$core.Deprecated('Use tagDescriptor instead')
 const Tag$json = const {
   '1': 'Tag',
@@ -83,6 +84,28 @@ const RegisterRequest$json = const {
 
 /// Descriptor for `RegisterRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List registerRequestDescriptor = $convert.base64Decode('Cg9SZWdpc3RlclJlcXVlc3QSEgoEbmFtZRgBIAEoCVIEbmFtZRIUCgVlbWFpbBgCIAEoCVIFZW1haWwSGgoIcGFzc3dvcmQYAyABKAlSCHBhc3N3b3Jk');
+@$core.Deprecated('Use updateUserLevelRequestDescriptor instead')
+const UpdateUserLevelRequest$json = const {
+  '1': 'UpdateUserLevelRequest',
+  '2': const [
+    const {'1': 'token', '3': 1, '4': 1, '5': 9, '10': 'token'},
+    const {'1': 'level', '3': 2, '4': 1, '5': 9, '10': 'level'},
+  ],
+};
+
+/// Descriptor for `UpdateUserLevelRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List updateUserLevelRequestDescriptor = $convert.base64Decode('ChZVcGRhdGVVc2VyTGV2ZWxSZXF1ZXN0EhQKBXRva2VuGAEgASgJUgV0b2tlbhIUCgVsZXZlbBgCIAEoCVIFbGV2ZWw=');
+@$core.Deprecated('Use updateUserTagsRequestDescriptor instead')
+const UpdateUserTagsRequest$json = const {
+  '1': 'UpdateUserTagsRequest',
+  '2': const [
+    const {'1': 'token', '3': 1, '4': 1, '5': 9, '10': 'token'},
+    const {'1': 'tags', '3': 2, '4': 3, '5': 11, '6': '.bulanlan.Tag', '10': 'tags'},
+  ],
+};
+
+/// Descriptor for `UpdateUserTagsRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List updateUserTagsRequestDescriptor = $convert.base64Decode('ChVVcGRhdGVVc2VyVGFnc1JlcXVlc3QSFAoFdG9rZW4YASABKAlSBXRva2VuEiEKBHRhZ3MYAiADKAsyDS5idWxhbmxhbi5UYWdSBHRhZ3M=');
 @$core.Deprecated('Use userInfoDescriptor instead')
 const UserInfo$json = const {
   '1': 'UserInfo',
@@ -101,22 +124,12 @@ const LoginResponse$json = const {
   '1': 'LoginResponse',
   '2': const [
     const {'1': 'response', '3': 1, '4': 1, '5': 11, '6': '.bulanlan.Response', '10': 'response'},
-    const {'1': 'user_info', '3': 2, '4': 1, '5': 11, '6': '.bulanlan.UserInfo', '10': 'userInfo'},
+    const {'1': 'token', '3': 2, '4': 1, '5': 9, '10': 'token'},
   ],
 };
 
 /// Descriptor for `LoginResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List loginResponseDescriptor = $convert.base64Decode('Cg1Mb2dpblJlc3BvbnNlEi4KCHJlc3BvbnNlGAEgASgLMhIuYnVsYW5sYW4uUmVzcG9uc2VSCHJlc3BvbnNlEi8KCXVzZXJfaW5mbxgCIAEoCzISLmJ1bGFubGFuLlVzZXJJbmZvUgh1c2VySW5mbw==');
-@$core.Deprecated('Use getBooksRequestDescriptor instead')
-const GetBooksRequest$json = const {
-  '1': 'GetBooksRequest',
-  '2': const [
-    const {'1': 'user', '3': 1, '4': 1, '5': 11, '6': '.bulanlan.User', '10': 'user'},
-  ],
-};
-
-/// Descriptor for `GetBooksRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List getBooksRequestDescriptor = $convert.base64Decode('Cg9HZXRCb29rc1JlcXVlc3QSIgoEdXNlchgBIAEoCzIOLmJ1bGFubGFuLlVzZXJSBHVzZXI=');
+final $typed_data.Uint8List loginResponseDescriptor = $convert.base64Decode('Cg1Mb2dpblJlc3BvbnNlEi4KCHJlc3BvbnNlGAEgASgLMhIuYnVsYW5sYW4uUmVzcG9uc2VSCHJlc3BvbnNlEhQKBXRva2VuGAIgASgJUgV0b2tlbg==');
 @$core.Deprecated('Use getBooksResponseDescriptor instead')
 const GetBooksResponse$json = const {
   '1': 'GetBooksResponse',
@@ -128,3 +141,35 @@ const GetBooksResponse$json = const {
 
 /// Descriptor for `GetBooksResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List getBooksResponseDescriptor = $convert.base64Decode('ChBHZXRCb29rc1Jlc3BvbnNlEi4KCHJlc3BvbnNlGAEgASgLMhIuYnVsYW5sYW4uUmVzcG9uc2VSCHJlc3BvbnNlEiQKBWJvb2tzGAIgAygLMg4uYnVsYW5sYW4uQm9va1IFYm9va3M=');
+@$core.Deprecated('Use requestDescriptor instead')
+const Request$json = const {
+  '1': 'Request',
+  '2': const [
+    const {'1': 'token', '3': 1, '4': 1, '5': 9, '10': 'token'},
+  ],
+};
+
+/// Descriptor for `Request`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List requestDescriptor = $convert.base64Decode('CgdSZXF1ZXN0EhQKBXRva2VuGAEgASgJUgV0b2tlbg==');
+@$core.Deprecated('Use getTagsResponseDescriptor instead')
+const GetTagsResponse$json = const {
+  '1': 'GetTagsResponse',
+  '2': const [
+    const {'1': 'response', '3': 1, '4': 1, '5': 11, '6': '.bulanlan.Response', '10': 'response'},
+    const {'1': 'tags', '3': 2, '4': 3, '5': 11, '6': '.bulanlan.Tag', '10': 'tags'},
+  ],
+};
+
+/// Descriptor for `GetTagsResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getTagsResponseDescriptor = $convert.base64Decode('Cg9HZXRUYWdzUmVzcG9uc2USLgoIcmVzcG9uc2UYASABKAsyEi5idWxhbmxhbi5SZXNwb25zZVIIcmVzcG9uc2USIQoEdGFncxgCIAMoCzINLmJ1bGFubGFuLlRhZ1IEdGFncw==');
+@$core.Deprecated('Use getUserInfoResponseDescriptor instead')
+const GetUserInfoResponse$json = const {
+  '1': 'GetUserInfoResponse',
+  '2': const [
+    const {'1': 'response', '3': 1, '4': 1, '5': 11, '6': '.bulanlan.Response', '10': 'response'},
+    const {'1': 'user_info', '3': 2, '4': 1, '5': 11, '6': '.bulanlan.UserInfo', '10': 'userInfo'},
+  ],
+};
+
+/// Descriptor for `GetUserInfoResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getUserInfoResponseDescriptor = $convert.base64Decode('ChNHZXRVc2VySW5mb1Jlc3BvbnNlEi4KCHJlc3BvbnNlGAEgASgLMhIuYnVsYW5sYW4uUmVzcG9uc2VSCHJlc3BvbnNlEi8KCXVzZXJfaW5mbxgCIAEoCzISLmJ1bGFubGFuLlVzZXJJbmZvUgh1c2VySW5mbw==');

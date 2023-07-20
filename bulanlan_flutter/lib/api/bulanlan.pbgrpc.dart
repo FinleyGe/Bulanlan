@@ -22,16 +22,30 @@ class UserServiceClient extends $grpc.Client {
       '/bulanlan.UserService/Register',
       ($0.RegisterRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Response.fromBuffer(value));
-  static final _$updateUser = $grpc.ClientMethod<$0.UserInfo, $0.Response>(
-      '/bulanlan.UserService/UpdateUser',
-      ($0.UserInfo value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $0.Response.fromBuffer(value));
-  static final _$getBooks =
-      $grpc.ClientMethod<$0.GetBooksRequest, $0.GetBooksResponse>(
-          '/bulanlan.UserService/GetBooks',
-          ($0.GetBooksRequest value) => value.writeToBuffer(),
+  static final _$updateUserLevel =
+      $grpc.ClientMethod<$0.UpdateUserLevelRequest, $0.Response>(
+          '/bulanlan.UserService/UpdateUserLevel',
+          ($0.UpdateUserLevelRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $0.Response.fromBuffer(value));
+  static final _$updateUserTags =
+      $grpc.ClientMethod<$0.UpdateUserTagsRequest, $0.Response>(
+          '/bulanlan.UserService/UpdateUserTags',
+          ($0.UpdateUserTagsRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $0.Response.fromBuffer(value));
+  static final _$getBooks = $grpc.ClientMethod<$0.Request, $0.GetBooksResponse>(
+      '/bulanlan.UserService/GetBooks',
+      ($0.Request value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.GetBooksResponse.fromBuffer(value));
+  static final _$getTags = $grpc.ClientMethod<$0.Request, $0.GetTagsResponse>(
+      '/bulanlan.UserService/GetTags',
+      ($0.Request value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.GetTagsResponse.fromBuffer(value));
+  static final _$getUserInfo =
+      $grpc.ClientMethod<$0.Request, $0.GetUserInfoResponse>(
+          '/bulanlan.UserService/GetUserInfo',
+          ($0.Request value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $0.GetBooksResponse.fromBuffer(value));
+              $0.GetUserInfoResponse.fromBuffer(value));
 
   UserServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -48,14 +62,31 @@ class UserServiceClient extends $grpc.Client {
     return $createUnaryCall(_$register, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.Response> updateUser($0.UserInfo request,
+  $grpc.ResponseFuture<$0.Response> updateUserLevel(
+      $0.UpdateUserLevelRequest request,
       {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$updateUser, request, options: options);
+    return $createUnaryCall(_$updateUserLevel, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.GetBooksResponse> getBooks($0.GetBooksRequest request,
+  $grpc.ResponseFuture<$0.Response> updateUserTags(
+      $0.UpdateUserTagsRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$updateUserTags, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$0.GetBooksResponse> getBooks($0.Request request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getBooks, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$0.GetTagsResponse> getTags($0.Request request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getTags, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$0.GetUserInfoResponse> getUserInfo($0.Request request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getUserInfo, request, options: options);
   }
 }
 
@@ -77,20 +108,43 @@ abstract class UserServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.RegisterRequest.fromBuffer(value),
         ($0.Response value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.UserInfo, $0.Response>(
-        'UpdateUser',
-        updateUser_Pre,
+    $addMethod($grpc.ServiceMethod<$0.UpdateUserLevelRequest, $0.Response>(
+        'UpdateUserLevel',
+        updateUserLevel_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $0.UserInfo.fromBuffer(value),
+        ($core.List<$core.int> value) =>
+            $0.UpdateUserLevelRequest.fromBuffer(value),
         ($0.Response value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.GetBooksRequest, $0.GetBooksResponse>(
+    $addMethod($grpc.ServiceMethod<$0.UpdateUserTagsRequest, $0.Response>(
+        'UpdateUserTags',
+        updateUserTags_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) =>
+            $0.UpdateUserTagsRequest.fromBuffer(value),
+        ($0.Response value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.Request, $0.GetBooksResponse>(
         'GetBooks',
         getBooks_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $0.GetBooksRequest.fromBuffer(value),
+        ($core.List<$core.int> value) => $0.Request.fromBuffer(value),
         ($0.GetBooksResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.Request, $0.GetTagsResponse>(
+        'GetTags',
+        getTags_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.Request.fromBuffer(value),
+        ($0.GetTagsResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.Request, $0.GetUserInfoResponse>(
+        'GetUserInfo',
+        getUserInfo_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.Request.fromBuffer(value),
+        ($0.GetUserInfoResponse value) => value.writeToBuffer()));
   }
 
   $async.Future<$0.LoginResponse> login_Pre(
@@ -103,22 +157,43 @@ abstract class UserServiceBase extends $grpc.Service {
     return register(call, await request);
   }
 
-  $async.Future<$0.Response> updateUser_Pre(
-      $grpc.ServiceCall call, $async.Future<$0.UserInfo> request) async {
-    return updateUser(call, await request);
+  $async.Future<$0.Response> updateUserLevel_Pre($grpc.ServiceCall call,
+      $async.Future<$0.UpdateUserLevelRequest> request) async {
+    return updateUserLevel(call, await request);
+  }
+
+  $async.Future<$0.Response> updateUserTags_Pre($grpc.ServiceCall call,
+      $async.Future<$0.UpdateUserTagsRequest> request) async {
+    return updateUserTags(call, await request);
   }
 
   $async.Future<$0.GetBooksResponse> getBooks_Pre(
-      $grpc.ServiceCall call, $async.Future<$0.GetBooksRequest> request) async {
+      $grpc.ServiceCall call, $async.Future<$0.Request> request) async {
     return getBooks(call, await request);
+  }
+
+  $async.Future<$0.GetTagsResponse> getTags_Pre(
+      $grpc.ServiceCall call, $async.Future<$0.Request> request) async {
+    return getTags(call, await request);
+  }
+
+  $async.Future<$0.GetUserInfoResponse> getUserInfo_Pre(
+      $grpc.ServiceCall call, $async.Future<$0.Request> request) async {
+    return getUserInfo(call, await request);
   }
 
   $async.Future<$0.LoginResponse> login(
       $grpc.ServiceCall call, $0.LoginRequest request);
   $async.Future<$0.Response> register(
       $grpc.ServiceCall call, $0.RegisterRequest request);
-  $async.Future<$0.Response> updateUser(
-      $grpc.ServiceCall call, $0.UserInfo request);
+  $async.Future<$0.Response> updateUserLevel(
+      $grpc.ServiceCall call, $0.UpdateUserLevelRequest request);
+  $async.Future<$0.Response> updateUserTags(
+      $grpc.ServiceCall call, $0.UpdateUserTagsRequest request);
   $async.Future<$0.GetBooksResponse> getBooks(
-      $grpc.ServiceCall call, $0.GetBooksRequest request);
+      $grpc.ServiceCall call, $0.Request request);
+  $async.Future<$0.GetTagsResponse> getTags(
+      $grpc.ServiceCall call, $0.Request request);
+  $async.Future<$0.GetUserInfoResponse> getUserInfo(
+      $grpc.ServiceCall call, $0.Request request);
 }

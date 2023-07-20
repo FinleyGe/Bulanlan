@@ -19,20 +19,32 @@ class ViewChangeNotifier extends ChangeNotifier {
 }
 
 class UserChangeNotifier extends ChangeNotifier {
+  String _token = "";
   String _name = "未登录";
-  String _email = "未登录";
-
+  String _level = "";
+  List<String> _tags = [];
+  String get token => _token;
   String get name => _name;
+  String get level => _level;
+  List<String> get tags => _tags;
 
-  String get email => _email;
+  set token(String token) {
+    _token = token;
+    notifyListeners();
+  }
 
   set name(String name) {
     _name = name;
     notifyListeners();
   }
 
-  set email(String email) {
-    _email = email;
+  set level(String level) {
+    _level = level;
+    notifyListeners();
+  }
+
+  set tags(List<String> tags) {
+    _tags = tags;
     notifyListeners();
   }
 }

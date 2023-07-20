@@ -22,7 +22,7 @@ class MultipleInputProblemState extends State<MultipleInputProblem> {
   @override
   void initState() {
     super.initState();
-    _value = List.filled(widget.problems.length, '');
+    _value = List.filled(widget.problems.length, '0');
   }
 
   @override
