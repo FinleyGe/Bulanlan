@@ -11,7 +11,7 @@ Future<ClientChannel> initClient() async {
     onBadCertificate: (cert, host) => true,
   );
   return ClientChannel(
-    'localhost',
+    '101.34.27.200',
     port: 50051,
     options: ChannelOptions(credentials: creds),
   );

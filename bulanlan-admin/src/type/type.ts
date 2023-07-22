@@ -23,3 +23,9 @@ export type Count = {
   count: number;
 }
 
+export type User = {
+  email: string;
+  name: string;
+  level: string;
+  tags: Tag[];
+}

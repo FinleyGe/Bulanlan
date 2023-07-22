@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { NDataTable, NButton, NSpace, NTag } from 'naive-ui';
+import { NDataTable, NButton, NSpace, NTag, useMessage } from 'naive-ui';
 import type { DataTableColumns } from 'naive-ui';
 import type { Book } from '../type/type';
 import { h, onMounted, ref } from 'vue';
-import { GetBooks } from '../api/api';
-
+import { GetBooks, UploadBookList } from '../api/api';
+const message = useMessage();
 const bookColums = <DataTableColumns<Book>>[{
   key: "name",
   title: "书名",
@@ -28,21 +28,6 @@ const bookColums = <DataTableColumns<Book>>[{
         }),
     });
   },
-}, {
-  key: "action",
-  title: "操作",
-  render(row) {
-    return h(
-      NButton, {
-      onClick() {
-        console.log(row);
-      },
-    },
-      {
-        default: () => '删除',
-      },
-    );
-  },
 },
 ];
 
@@ -53,7 +38,20 @@ async function handleFlush() {
 }
 
 function handleAdd() {
-  console.log('add');
+  let booklist: File;
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.onchange = (e) => {
+    booklist = (<HTMLInputElement>e.target).files![0];
+  };
+  input.click();
+  input.onchange = async (_) => {
+    const res = await UploadBookList(booklist);
+    if (res.status == 200) {
+      message.success('上传成功');
+      handleFlush();
+    }
+  };
 }
 
 onMounted(() => {
