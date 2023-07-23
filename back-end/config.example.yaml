@@ -1,0 +1,17 @@
+dev: true
+
+database:
+  db_name: "db_name"
+  username: ""
+  password: ""
+  host: ""
+  port: ""
+
+server:
+  grpc_port: 50051
+  restful_port: 8888
+  allow_origins:
+    - "http://localhost:5173"
+  log_file_path: "./var/log/bulanlan.log"
+  secret: ""
+  domain: ""

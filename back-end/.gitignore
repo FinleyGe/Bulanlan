@@ -1,0 +1,6 @@
+log/*.log
+config.yaml
+cert
+build.sh
+book_list.xlsx
+books/*
