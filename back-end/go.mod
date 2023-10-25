@@ -10,7 +10,7 @@ require (
 	github.com/spf13/viper v1.12.0
 	github.com/xuri/excelize/v2 v2.7.1
 	golang.org/x/exp v0.0.0-20230713183714-613f0c0eb8a1
-	google.golang.org/grpc v1.55.0
+	google.golang.org/grpc v1.56.3
 	google.golang.org/protobuf v1.30.0
 	gorm.io/driver/postgres v1.5.2
 	gorm.io/gorm v1.25.0
